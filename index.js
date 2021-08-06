@@ -2,12 +2,12 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
+const morgan = require('morgan');
 
 // Middlewares imports
 
 // Import routes
 const scoreRoute = require('./routes/scoreRoute');
-
 
 const app = express();
 
@@ -31,9 +31,10 @@ db.once('open', function () {
 
 // Middleware
 app.use(express.json());
+app.use(morgan("tiny"));
 
-// Route Middlewares
+// Routes
 app.use('/api/score', scoreRoute);
 
 
-app.listen(process.env.PORT || 3000, () => console.log('Server Up and runnig'));
+app.listen(process.env.PORT || 5000, () => console.log('Server Up and runnig'));
