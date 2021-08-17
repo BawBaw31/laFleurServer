@@ -49,7 +49,7 @@ router.get('/player/:player', async(req,res) => {
 router.get('/best/:limit', async(req,res) => {
     try {
         const limit = Number(req.params.limit);
-        const scores = await Score.find().limit(limit).sort({value : 1});
+        const scores = await Score.find().limit(limit).sort({value : -1});
 
         return res.json({ 
             scores : scores,
