@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const morgan = require('morgan');
 
 // Middlewares imports
-const validateKey = require('./middleware/validation');
+// const validateKey = require('./middleware/validation');
 
 // Import routes
 const scoreRoute = require('./routes/scoreRoute');
@@ -35,7 +35,8 @@ app.use(express.json());
 app.use(morgan("tiny"));
 
 // Routes
-app.use('/api/score', validateKey, scoreRoute);
+// app.use('/api/score', validateKey, scoreRoute);
+app.use('/api/score', scoreRoute);
 
 
 app.listen(process.env.PORT || 5000, () => console.log('Server Up and runnig'));

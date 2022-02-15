@@ -1,8 +1,10 @@
 const router = require('express').Router();
+// TODO rm validateKey
+const validateKey = require('../middleware/validation');
 const Score = require('../models/scoreModel');
 
 // Post Score
-router.post('/', async(req,res) => {
+router.post('/', validateKey, async(req,res) => {
     try {
         const score = req.body;
         const new_score = new Score(score);
